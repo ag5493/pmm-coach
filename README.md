@@ -1,4 +1,4 @@
-# PMM Onboarding Coach — by MOR
+# PMM Onboarding Coach
 
 A structured AI-powered practice environment for first-time Product Marketing Managers, built for Series B B2B SaaS reality.
 
@@ -12,10 +12,10 @@ This app gives new PMMs a safe space to practice, get feedback, and build confid
 
 | Module | What It Does |
 |---|---|
-| 🎭 Stakeholder Roleplay | Practice difficult conversations with a skeptical founder, territorial PM, dismissive sales lead, or ambiguous executive. Get feedback after each session. |
-| 📋 Work Reviewer | Paste any PMM artifact (positioning doc, competitive brief, battle card) and get structured, senior-PMM-level feedback. |
-| 🗓️ 30-60-90 Plan Builder | Answer a few questions about your company and role, and get a tailored onboarding plan built for your specific situation. Download it as Markdown. |
-| 🔥 Pressure Test | Explain your strategy out loud. A senior PMM will challenge your assumptions and poke holes — before the real meeting. |
+| Stakeholder Roleplay | Practice difficult conversations with a skeptical founder, territorial PM, dismissive sales lead, or ambiguous executive. Get feedback after each session. |
+| Work Reviewer | Paste any PMM artifact (positioning doc, competitive brief, battle card) and get structured, senior-PMM-level feedback. |
+| 30-60-90 Plan Builder | Answer a few questions about your company and role, and get a tailored onboarding plan built for your specific situation. Download it as Markdown. |
+| Pressure Test | Explain your strategy out loud. A senior PMM will challenge your assumptions and poke holes — before the real meeting. |
 
 ---
 
@@ -95,7 +95,7 @@ pmm-coach/
 
 - [Streamlit](https://streamlit.io) — UI framework
 - [Anthropic Claude](https://anthropic.com) — AI backbone (claude-sonnet-4-6)
-- MOR brand design — [teammor.com](https://teammor.com)
+-- Brand design — [teammor.com](https://teammor.com)
 
 ---
 

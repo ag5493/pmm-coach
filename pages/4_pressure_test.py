@@ -3,23 +3,22 @@ import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from utils.claude_client import get_client
 
-st.set_page_config(page_title="Pressure Test | PMM Coach", page_icon="🔥", layout="wide")
+st.set_page_config(page_title="Pressure Test | PMM Coach", layout="wide")
 
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
-:root { --mor-black:#0D0D0D; --mor-white:#F5F4F0; --mor-gold:#C9A84C; --mor-gold-lt:#E8C97A; --mor-gray:#2A2A2A; --mor-mid:#6B6B6B; }
-html,body,[class*="css"]{ font-family:'DM Sans',sans-serif; background-color:var(--mor-black); color:var(--mor-white); }
+:root { --tm-bg:#FFFFFF; --tm-text:#0D0D0D; --tm-accent:#C9A84C; --tm-accent-2:#E8C97A; --tm-muted:#6B6B6B; --tm-border:#E6E6E6; }
+html,body,[class*="css"]{ font-family:'DM Sans',sans-serif; background-color:var(--tm-bg); color:var(--tm-text); }
 h1,h2,h3,h4,h5,h6{ font-family:'Syne',sans-serif !important; font-weight:700 !important; }
-[data-testid="stSidebar"]{ background-color:#111111 !important; border-right:1px solid #222 !important; }
 .block-container{ padding-top:2rem !important; max-width:960px !important; }
-.stButton>button{ background-color:var(--mor-gold) !important; color:var(--mor-black) !important; font-family:'Syne',sans-serif !important; font-weight:700 !important; border:none !important; border-radius:4px !important; padding:0.6rem 1.4rem !important; }
-.stButton>button:hover{ background-color:var(--mor-gold-lt) !important; }
-.stTextInput input,.stTextArea textarea{ background-color:#1A1A1A !important; border:1px solid #333 !important; color:var(--mor-white) !important; border-radius:4px !important; }
-[data-baseweb="select"]>div{ background-color:#1A1A1A !important; border-color:#333 !important; }
-.stAlert{ background-color:#1A1A1A !important; border-left:3px solid var(--mor-gold) !important; color:var(--mor-white) !important; }
-[data-testid="stChatMessage"]{ background-color:#1A1A1A !important; border-radius:8px !important; border:1px solid #2A2A2A !important; margin-bottom:0.5rem !important; }
-hr{ border-color:#2A2A2A !important; }
+.stButton>button{ background-color:var(--tm-accent) !important; color:var(--tm-text) !important; font-family:'Syne',sans-serif !important; font-weight:700 !important; border:none !important; border-radius:6px !important; padding:0.6rem 1.2rem !important; }
+.stButton>button:hover{ background-color:var(--tm-accent-2) !important; }
+.stTextInput input,.stTextArea textarea{ background-color:#FFFFFF !important; border:1px solid var(--tm-border) !important; color:var(--tm-text) !important; border-radius:6px !important; }
+[data-baseweb="select"]>div{ background-color:#FFFFFF !important; border-color:var(--tm-border) !important; }
+.stAlert{ background-color:#FFFDF5 !important; border-left:3px solid var(--tm-accent) !important; color:var(--tm-text) !important; }
+[data-testid="stChatMessage"]{ background-color:#FAFAFA !important; border-radius:8px !important; border:1px solid var(--tm-border) !important; margin-bottom:0.5rem !important; }
+hr{ border-color:var(--tm-border) !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -67,7 +66,7 @@ Be as specific as you can.""",
     )
 with col2:
     st.markdown("<br><br>", unsafe_allow_html=True)
-    if st.button("Start Pressure Test →"):
+    if st.button("Start Pressure Test"):
         if topic_input.strip():
             st.session_state["pressure_messages"] = [{"role": "user", "content": topic_input}]
             st.session_state["pressure_active"] = True
@@ -76,7 +75,7 @@ with col2:
             st.warning("Please describe what you want to pressure test.")
 
     if st.session_state["pressure_active"]:
-        if st.button("🔄 Reset"):
+        if st.button("Reset"):
             st.session_state["pressure_messages"] = []
             st.session_state["pressure_active"] = False
             st.rerun()
@@ -97,8 +96,8 @@ if st.session_state["pressure_active"] and len(st.session_state["pressure_messag
         ) as stream:
             for text in stream.text_stream:
                 full_response += text
-                placeholder.markdown(f"**🔥 Senior PMM:** {full_response}▌")
-        placeholder.markdown(f"**🔥 Senior PMM:** {full_response}")
+                placeholder.markdown(f"**Senior PMM:** {full_response}▌")
+        placeholder.markdown(f"**Senior PMM:** {full_response}")
     st.session_state["pressure_messages"].append({"role": "assistant", "content": full_response})
     st.rerun()
 
@@ -110,7 +109,7 @@ if st.session_state["pressure_active"] and len(st.session_state["pressure_messag
                 st.markdown(f"**You:** {msg['content']}")
         else:
             with st.chat_message("assistant"):
-                st.markdown(f"**🔥 Senior PMM:** {msg['content']}")
+                st.markdown(f"**Senior PMM:** {msg['content']}")
 
     # Response input
     user_reply = st.chat_input("Your response... (or type 'SUMMARISE' for a final assessment)")
@@ -128,14 +127,14 @@ if st.session_state["pressure_active"] and len(st.session_state["pressure_messag
             ) as stream:
                 for text in stream.text_stream:
                     full_response += text
-                    placeholder.markdown(f"**🔥 Senior PMM:** {full_response}▌")
-            placeholder.markdown(f"**🔥 Senior PMM:** {full_response}")
+                    placeholder.markdown(f"**Senior PMM:** {full_response}▌")
+            placeholder.markdown(f"**Senior PMM:** {full_response}")
         st.session_state["pressure_messages"].append({"role": "assistant", "content": full_response})
         st.rerun()
 
 elif not st.session_state["pressure_active"]:
     st.markdown("""
-    <div style='color:#6B6B6B;text-align:center;padding:3rem;border:1px dashed #2A2A2A;border-radius:8px;'>
-        Describe your strategy or thinking above, then click <strong style='color:#C9A84C;'>Start Pressure Test</strong>.
+    <div style='color:var(--tm-muted);text-align:center;padding:3rem;border:1px dashed var(--tm-border);border-radius:8px;'>
+        Describe your strategy or thinking above, then click <strong style='color:var(--tm-accent);'>Start Pressure Test</strong>.
     </div>
     """, unsafe_allow_html=True)

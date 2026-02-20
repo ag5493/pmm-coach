@@ -3,30 +3,29 @@ import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from utils.claude_client import get_client
 
-st.set_page_config(page_title="30-60-90 Plan Builder | PMM Coach", page_icon="🗓️", layout="wide")
+st.set_page_config(page_title="30-60-90 Plan Builder | PMM Coach", layout="wide")
 
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
-:root { --mor-black:#0D0D0D; --mor-white:#F5F4F0; --mor-gold:#C9A84C; --mor-gold-lt:#E8C97A; --mor-gray:#2A2A2A; --mor-mid:#6B6B6B; }
-html,body,[class*="css"]{ font-family:'DM Sans',sans-serif; background-color:var(--mor-black); color:var(--mor-white); }
+:root { --tm-bg:#FFFFFF; --tm-text:#0D0D0D; --tm-accent:#C9A84C; --tm-accent-2:#E8C97A; --tm-muted:#6B6B6B; --tm-border:#E6E6E6; }
+html,body,[class*="css"]{ font-family:'DM Sans',sans-serif; background-color:var(--tm-bg); color:var(--tm-text); }
 h1,h2,h3,h4,h5,h6{ font-family:'Syne',sans-serif !important; font-weight:700 !important; }
-[data-testid="stSidebar"]{ background-color:#111111 !important; border-right:1px solid #222 !important; }
 .block-container{ padding-top:2rem !important; max-width:960px !important; }
-.stButton>button{ background-color:var(--mor-gold) !important; color:var(--mor-black) !important; font-family:'Syne',sans-serif !important; font-weight:700 !important; border:none !important; border-radius:4px !important; padding:0.6rem 1.4rem !important; }
-.stButton>button:hover{ background-color:var(--mor-gold-lt) !important; }
-.stTextInput input,.stTextArea textarea{ background-color:#1A1A1A !important; border:1px solid #333 !important; color:var(--mor-white) !important; border-radius:4px !important; }
-[data-baseweb="select"]>div{ background-color:#1A1A1A !important; border-color:#333 !important; }
-.stAlert{ background-color:#1A1A1A !important; border-left:3px solid var(--mor-gold) !important; color:var(--mor-white) !important; }
-hr{ border-color:#2A2A2A !important; }
+.stButton>button{ background-color:var(--tm-accent) !important; color:var(--tm-text) !important; font-family:'Syne',sans-serif !important; font-weight:700 !important; border:none !important; border-radius:6px !important; padding:0.6rem 1.2rem !important; }
+.stButton>button:hover{ background-color:var(--tm-accent-2) !important; }
+.stTextInput input,.stTextArea textarea{ background-color:#FFFFFF !important; border:1px solid var(--tm-border) !important; color:var(--tm-text) !important; border-radius:6px !important; }
+[data-baseweb="select"]>div{ background-color:#FFFFFF !important; border-color:var(--tm-border) !important; }
+.stAlert{ background-color:#FFFDF5 !important; border-left:3px solid var(--tm-accent) !important; color:var(--tm-text) !important; }
+hr{ border-color:var(--tm-border) !important; }
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<span style='font-family:Syne,sans-serif;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.14em;color:#C9A84C;'>Module 3</span>
-<h1 style='font-size:2.4rem;margin-bottom:0.3rem;'>30-60-90 Day Plan Builder</h1>
-<p style='color:#6B6B6B;font-size:1rem;margin-bottom:2rem;max-width:560px;'>
-Answer a few questions about your role and company, and get a tailored onboarding plan built for Series B B2B SaaS reality — not a generic template.
+<span style='font-family:Syne,sans-serif;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--tm-accent);'>Module 3</span>
+<h1 style='font-size:2.2rem;margin-bottom:0.3rem;'>30-60-90 Day Plan Builder</h1>
+<p style='color:var(--tm-muted);font-size:1rem;margin-bottom:2rem;max-width:560px;'>
+Answer a few questions about your role and company, and get a tailored onboarding plan built for fast-moving B2B SaaS environments.
 </p>
 """, unsafe_allow_html=True)
 
@@ -117,7 +116,7 @@ Create a specific, actionable 30-60-90 day plan tailored to my situation."""
 
         # Download button
         st.download_button(
-            label="⬇️ Download as Markdown",
+            label="Download as Markdown",
             data=f"# My PMM 30-60-90 Day Onboarding Plan\n\n{plan}",
             file_name="pmm_30_60_90_plan.md",
             mime="text/markdown",

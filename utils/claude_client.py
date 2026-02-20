@@ -34,56 +34,56 @@ def require_api_key() -> None:
     if _resolve_api_key():
         return  # key is present — nothing to do
 
-    # ── Styled key-gate screen ────────────────────────────────────────────────
+    # ── Styled key-gate screen (white, minimal) ─────────────────────────────────
     st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap');
     .key-gate {
-        max-width: 480px;
+        max-width: 520px;
         margin: 6rem auto 0;
-        background: #1A1A1A;
-        border: 1px solid #2A2A2A;
+        background: #FFFFFF;
+        border: 1px solid #E6E6E6;
         border-radius: 12px;
         padding: 2.5rem 2rem;
         text-align: center;
     }
     .key-gate .logo {
         font-family: 'Syne', sans-serif;
-        font-size: 2rem;
+        font-size: 1.4rem;
         font-weight: 800;
         color: #C9A84C;
     }
     .key-gate .subtitle {
         font-family: 'DM Sans', sans-serif;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 0.12em;
         color: #6B6B6B;
         margin-top: -4px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
     }
     .key-gate h2 {
         font-family: 'Syne', sans-serif !important;
-        font-size: 1.4rem !important;
-        color: #F5F4F0;
-        margin-bottom: 0.5rem;
+        font-size: 1.25rem !important;
+        color: #0D0D0D;
+        margin-bottom: 0.4rem;
     }
     .key-gate p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: #6B6B6B;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         line-height: 1.6;
     }
     .key-gate a { color: #C9A84C; text-decoration: none; }
     </style>
 
     <div class="key-gate">
-        <div class="logo">MOR</div>
-        <div class="subtitle">PMM Coach</div>
+        <div class="logo">PMM Coach</div>
+        <div class="subtitle">Unlock modules</div>
         <h2>API Key Required</h2>
         <p>
-            This app is powered by Claude (Anthropic).<br>
-            Enter your API key to unlock all modules.<br>
+            This app uses Claude (Anthropic).<br>
+            Enter your API key to unlock the coaching modules.<br>
             <a href="https://console.anthropic.com/account/keys" target="_blank">
                 Get your key at console.anthropic.com →
             </a>
